@@ -18,7 +18,6 @@ def main(
     scenario: int = 1,
     n_cols: list[int] = [40],
     n_rows: list[int] = [100, 200, 400],
-    K: list[int] = [12],
 ):
     """Solve the variable selection problem with on a variety of settings,
     including:
@@ -52,15 +51,17 @@ def main(
         The number of variables in the data matrix, by default [40]
     n_rows : list[int], optional
         The number of rows in the data matrix, by default [100, 200, 400]
-    K : list[int], optional
-        A list with different values for the sparsity parameter, by default [12]
     """
+    K = [
+        SCENARIO_DEFINITION[scenario]["true_feat_lin"]
+        + SCENARIO_DEFINITION[scenario]["true_feat_nonlin"]
+    ]
     np.random.seed(seed)
 
     conf_gurobi = {
         "OutputFlag": 0,
         "threads": 1,
-        "timelimit": 60,
+        "timelimit": 10000,
         "MIPFocus": 0,
         "MIPGap": 1e-4,
     }
@@ -70,10 +71,10 @@ def main(
         "max_time": 3600,
         "max_iter": 1000000,
         "n_iter_no_change": 20,
-        "n_iter_pgl": 10000,
-        "eps": 1e-1,
-        "tol_pgl": 0.1,
-        "n_alphas": 200,
+        "n_iter_pgl": 2000,
+        "eps": 1e-2,
+        "tol_pgl": 1e-3,
+        "n_alphas": 50,
         "patience": 10,
         "min_edf": 1,
     }
@@ -128,10 +129,12 @@ def main(
                         # to be equal to the number of features, just one iteration and
                         # we do not preprocess non-linear terms
                         conf_model_ = conf_model.copy()
+                        conf_gurobi_ = conf_gurobi.copy()
                         if optimality:
                             conf_model_.update(
                                 {"q": 2 * n_vars, "max_iter": 1, "min_edf": 70}
                             )
+                            conf_gurobi_.update({"OutputFlag": 1, "timelimit": 3600})
                         # Iterate over computing the bounds on the regression
                         # coefficients or not
                         for compute_coef_bounds in [True, False]:
@@ -149,7 +152,7 @@ def main(
                                     y=y,
                                     K=k,
                                     train_size=None,
-                                    conf_gurobi=conf_gurobi,
+                                    conf_gurobi=conf_gurobi_,
                                     conf_model=conf_model_,
                                     warm_start=warm_start,
                                     scale_y=False,

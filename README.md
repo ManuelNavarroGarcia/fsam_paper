@@ -15,14 +15,19 @@ The current version of the project is structured as follows:
   consist of:
   * **R_scripts**: contains the code to the other state-of-the-art algorithms used to
     compare our approach.
-  * **matheuristic_performance.py**: the code used in the comparison of the MIQP
-    formulation and FSAM (Section 5.1.1).
   * **fsam_comparison.py**: the code used in the comparison of FSAM with the other
     state-of-the-art methodologies (Section 5.1.2).
+  * **fsam_ws_performance.py**: the code used in the comparison of the MIQP
+    formulation and FSAM used as warm start (Section 5.1.1).
+  * **matheuristic_performance.py**: the code used in the comparison of the MIQP
+    formulation and FSAM (Section 5.1.1).
+  * **matheuristic_performance.py**: the sensibility analysis performed on the destroy
+    size and the patience parameters (Supplementary Material).
+  * **small_datasets.py**: the code used in the real-world data sets (Section 5.2.1).
   * **superconductors.py**: the code used in the real data set application of
-    superconductivity data (Section 5.2).
+    superconductivity data (Section 5.2.2).
   * **tables.ipynb**: A Jupyter notebook containing the code used to generate the tables
-    of the paper.
+    and the figures of the paper.
   * **utils.py**: Auxiliary code for the rest of the scripts.
 * **data**: a folder containing CSV and parquet files with simulated and real data sets
   results.

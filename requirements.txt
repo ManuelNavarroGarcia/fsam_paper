@@ -39,7 +39,7 @@ executing==2.0.1
     # via stack-data
 fonttools==4.44.0
     # via matplotlib
-fsam==0.1.0
+fsam==0.1.1
     # via fsam-paper (setup.py)
 gurobipy==10.0.3
     # via fsam

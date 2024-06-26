@@ -65,20 +65,20 @@ def main(
     conf_gurobi = {
         "OutputFlag": 0,
         "threads": 1,
-        "timelimit": 60,
+        "timelimit": 3600,
         "MIPFocus": 0,
         "MIPGap": 1e-4,
     }
     conf_model = {
         "criterion": "mae",
         "q": 30,
-        "max_time": 3600,
+        "max_time": 1000000,
         "max_iter": 1000000,
         "n_iter_no_change": 20,
-        "n_iter_pgl": 10000,
-        "eps": 1e-1,
-        "tol_pgl": 0.1,
-        "n_alphas": 200,
+        "n_iter_pgl": 2000,
+        "eps": 1e-2,
+        "tol_pgl": 0.001,
+        "n_alphas": 50,
         "patience": 10,
         "min_edf": 1,
     }

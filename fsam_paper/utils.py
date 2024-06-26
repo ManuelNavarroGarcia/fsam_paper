@@ -63,7 +63,7 @@ def get_y(
     elif scenario == 2:
         f1 = np.multiply(-1, np.sin(np.multiply(1.5, X[:, :true_feat_nonlin])))
         f2 = np.power(X[:, :true_feat_nonlin], 3) + np.multiply(
-            1.5, np.square(X[:, :true_feat_nonlin] - 0.5)
+            1.5, np.square(X[:, :true_feat_nonlin])
         )
         f3 = np.multiply(-1, norm.pdf(X[:, :true_feat_nonlin], loc=0.5, scale=0.8))
         f4 = np.sin(np.exp(np.multiply(-0.5, X[:, :true_feat_nonlin])))
