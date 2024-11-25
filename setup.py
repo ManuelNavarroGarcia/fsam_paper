@@ -25,6 +25,7 @@ setup(
         "scikit-learn",
         "tqdm",
         "rpy2",
+        "seaborn",
     ],
     extras_require={"dev": ["black", "ipykernel", "pip-tools", "pytest", "ipywidgets"]},
 )
