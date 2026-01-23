@@ -223,7 +223,7 @@ tzlocal==5.2
     # via rpy2
 wcwidth==0.2.10
     # via prompt-toolkit
-wheel==0.41.3
+wheel==0.46.2
     # via pip-tools
 widgetsnbextension==4.0.9
     # via ipywidgets
