@@ -13,7 +13,7 @@ setup(
     long_description_content_type="text/markdown",
     author="Manuel Navarro García",
     author_email="manuelnavarrogithub@gmail.com",
-    python_requires=">=3.9",
+    python_requires=">=3.11",
     setup_requires=["setuptools_scm"],
     install_requires=[
         "fsam",
